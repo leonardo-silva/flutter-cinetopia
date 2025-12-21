@@ -7,15 +7,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Image.asset("assets/logo.png"),
-          Image.asset("assets/splash.png"),
-          Text(
-            "O lugar ideal para buscar, salvar e organizar seus filmes favoritos!",
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 26),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Image.asset("assets/logo.png"),
+              Image.asset("assets/splash.png"),
+              Text(
+                "O lugar ideal para buscar, salvar e organizar seus filmes favoritos!",
+              ),
+              PrimaryButton(),
+            ],
           ),
-          PrimaryButton(),
-        ],
+        ),
       ),
     );
   }
