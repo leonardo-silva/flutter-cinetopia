@@ -26,6 +26,7 @@ class _DashboardState extends State<Dashboard> {
         padding: const EdgeInsets.fromLTRB(16, 54, 16, 0),
         child: _screens.elementAt(_currentIndex),
       ),
+      backgroundColor: Color(0xFF1D0E44),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (value) => updateIndex(value),

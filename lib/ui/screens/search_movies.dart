@@ -13,8 +13,36 @@ class SearchMovies extends StatelessWidget {
         SliverToBoxAdapter(
           child: Image.asset("assets/movie.png", height: 80, width: 80),
         ),
-        SliverToBoxAdapter(child: Text("Filmes populares")),
-        SliverToBoxAdapter(child: TextField()),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 40),
+            child: Text(
+              "Filmes populares",
+              style: TextStyle(
+                color: Color(0xFFEBEBEB),
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 30),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                label: Text(
+                  "Pesquisar",
+                  style: TextStyle(color: Color(0xFFEBEBEB)),
+                ),
+              ),
+            ),
+          ),
+        ),
         SliverList.builder(
           itemBuilder: (context, index) => MovieCard(),
           itemCount: 10,
