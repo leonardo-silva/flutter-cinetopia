@@ -21,7 +21,7 @@ class SearchMovies extends StatelessWidget {
               style: TextStyle(
                 color: Color(0xFFEBEBEB),
                 fontSize: 24,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
               ),
               textAlign: TextAlign.center,
             ),
@@ -29,11 +29,11 @@ class SearchMovies extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 30),
+            padding: const EdgeInsets.only(bottom: 32),
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
                 ),
                 label: Text(
                   "Pesquisar",
