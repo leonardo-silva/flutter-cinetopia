@@ -1,23 +1,22 @@
 import 'dart:convert';
 
-import 'package:cinetopia/app/api_key.dart';
+import 'package:cinetopia/app/helpers/consts.dart';
 import 'package:cinetopia/app/models/movie.dart';
 import 'package:http/http.dart';
 
-class SearchMoviesService {
-  final String popularMoviesUrl =
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+abstract class SearchMoviesService {
+  Future<List<Movie>> getMovies();
+}
 
+class SearchPopularMoviesService implements SearchMoviesService {
   List<Movie> movies = <Movie>[];
 
-  Future<List<Movie>> searchMovies() async {
+  @override
+  Future<List<Movie>> getMovies() async {
     try {
       final response = await get(
         Uri.parse(popularMoviesUrl),
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer $apiKey',
-        },
+        headers: requestHeader,
       );
 
       if (response.statusCode == 200) {

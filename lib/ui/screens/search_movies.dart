@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 class SearchMovies extends StatelessWidget {
   SearchMovies({super.key});
 
-  final SearchMoviesService searchMoviesService = SearchMoviesService();
+  final SearchPopularMoviesService searchPopularMoviesService =
+      SearchPopularMoviesService();
 
   @override
   Widget build(BuildContext context) {
     // In this case we are going to use the widget CustomScrollView instead of SingleChildScrollView
     // because we cannot use SingleChildScrollView with a Column as a child, it raises an exception.
     return FutureBuilder(
-      future: searchMoviesService.searchMovies(),
+      future: searchPopularMoviesService.getMovies(),
       builder: (context, asyncSnapshot) {
         if (asyncSnapshot.hasData) {
           return CustomScrollView(
