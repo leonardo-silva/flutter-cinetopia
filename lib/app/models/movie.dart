@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cinetopia/app/helpers/consts.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Movie {
   final int id;
@@ -15,6 +17,10 @@ class Movie {
     required this.releaseDate,
     required this.overView,
   });
+
+  String getPosterImage() {
+    return imageUrlPrefix + imageUrl;
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
