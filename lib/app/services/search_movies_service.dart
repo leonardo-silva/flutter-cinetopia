@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
+import 'package:http/http.dart';
 
 import 'package:cinetopia/app/helpers/consts.dart';
 import 'package:cinetopia/app/models/movie.dart';
-import 'package:http/http.dart';
 
 abstract class SearchMoviesService {
   Future<List<Movie>> getMovies();
@@ -23,9 +25,34 @@ class SearchPopularMoviesService implements SearchMoviesService {
         for (dynamic movie in json.decode(response.body)['results']) {
           movies.add(Movie.fromMap(movie));
         }
+      } else {
+        throw Exception(response.body);
+      }
+    } catch (e) {
+      print(e);
+    }
 
-        for (Movie movie in movies) {
-          print(movie.title);
+    return movies;
+  }
+}
+
+class SearchForMovieService implements SearchMoviesService {
+  List<Movie> movies = <Movie>[];
+  final String query;
+
+  SearchForMovieService({required this.query});
+
+  @override
+  Future<List<Movie>> getMovies() async {
+    try {
+      final response = await get(
+        Uri.parse(moviePrefixUrl + query + movieFilterSulfix),
+        headers: requestHeader,
+      );
+
+      if (response.statusCode == 200) {
+        for (dynamic movie in json.decode(response.body)['results']) {
+          movies.add(Movie.fromMap(movie));
         }
       } else {
         throw Exception(response.body);
