@@ -3,6 +3,9 @@ import 'package:cinetopia/app/api_key.dart';
 const String popularMoviesUrl =
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 
+const String onTheAirMoviesUrl =
+    "https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1";
+
 const String moviePrefixUrl =
     "https://api.themoviedb.org/3/search/movie?query=";
 

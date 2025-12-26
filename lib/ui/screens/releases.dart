@@ -5,6 +5,26 @@ class Releases extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Lançamentos"));
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+          child: Image.asset("assets/upcoming.png", height: 80, width: 80),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 40),
+            child: Text(
+              "Próximos Lançamentos",
+              style: TextStyle(
+                color: Color(0xFFEBEBEB),
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

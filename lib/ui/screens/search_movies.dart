@@ -3,7 +3,7 @@ import 'package:cinetopia/ui/components/movie_card.dart';
 import 'package:flutter/material.dart';
 
 class SearchMovies extends StatefulWidget {
-  SearchMovies({super.key});
+  const SearchMovies({super.key});
 
   @override
   State<SearchMovies> createState() => _SearchMoviesState();
