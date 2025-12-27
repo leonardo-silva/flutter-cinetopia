@@ -1,3 +1,4 @@
+import 'package:cinetopia/ui/screens/details_page.dart';
 import 'package:cinetopia/ui/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class Cinetopia extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.deepPurple,
       ),
-      home: HomePage(),
+      home: DetailsPage(),
     );
   }
 }
