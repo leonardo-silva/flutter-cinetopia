@@ -8,14 +8,14 @@ class Movie {
   final String title;
   final String imageUrl;
   final String releaseDate;
-  final String overView;
+  final String overview;
 
   Movie({
     required this.id,
     required this.title,
     required this.imageUrl,
     required this.releaseDate,
-    required this.overView,
+    required this.overview,
   });
 
   String getPosterImage() {
@@ -28,17 +28,19 @@ class Movie {
       'title': title,
       'imageUrl': imageUrl,
       'releaseDate': releaseDate,
-      'overView': overView,
+      'overview': overview,
     };
   }
 
   factory Movie.fromMap(Map<String, dynamic> map) {
+    String title = map['title'] ?? map['name'];
+    String releaseDate = map['release_date'] ?? map['first_air_date'];
     return Movie(
       id: map['id'] as int,
-      title: map['title'] as String,
+      title: title,
       imageUrl: map['poster_path'] as String,
-      releaseDate: map['release_date'] as String,
-      overView: map['overview'] as String,
+      releaseDate: releaseDate,
+      overview: map['overview'] as String,
     );
   }
 

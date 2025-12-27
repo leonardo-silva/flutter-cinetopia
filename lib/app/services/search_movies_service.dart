@@ -64,3 +64,29 @@ class SearchForMovieService implements SearchMoviesService {
     return movies;
   }
 }
+
+class SearchOnTheAirMoviesService implements SearchMoviesService {
+  List<Movie> movies = <Movie>[];
+
+  @override
+  Future<List<Movie>> getMovies() async {
+    try {
+      final response = await get(
+        Uri.parse(onTheAirMoviesUrl),
+        headers: requestHeader,
+      );
+
+      if (response.statusCode == 200) {
+        for (dynamic movie in json.decode(response.body)['results']) {
+          movies.add(Movie.fromMap(movie));
+        }
+      } else {
+        throw Exception(response.body);
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    return movies;
+  }
+}
