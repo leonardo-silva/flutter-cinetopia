@@ -14,7 +14,7 @@ class Cinetopia extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.deepPurple,
       ),
-      home: DetailsPage(),
+      home: HomePage(),
     );
   }
 }

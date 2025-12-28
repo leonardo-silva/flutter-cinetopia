@@ -1,29 +1,38 @@
 import 'package:cinetopia/app/helpers/consts.dart';
+import 'package:cinetopia/app/helpers/util.dart';
+import 'package:cinetopia/app/models/movie.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  final Movie movie;
+
+  const DetailsPage({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1D0E44),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(16, 45, 16, 0),
+        padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Icon(Icons.arrow_back),
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             Center(
               child: Column(
                 children: <Widget>[
-                  Image.asset("assets/movie.png"),
+                  Image.asset("assets/movie.png", height: 80, width: 80),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 20),
                     child: Text(
-                      "Title",
+                      movie.title,
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 23,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -35,9 +44,7 @@ class DetailsPage extends StatelessWidget {
                       color: Color(0xFF000000),
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                        image: NetworkImage(
-                          "$imageUrlPrefix/aoAZgnmMzY9vVy9VWnO3U5PZENh.jpg",
-                        ),
+                        image: NetworkImage(imageUrlPrefix + movie.imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -46,14 +53,14 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 35, bottom: 15),
+              padding: const EdgeInsets.only(top: 30, bottom: 15),
               child: Text(
-                "Descrição",
+                "Description",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
             Text(
-              "Thor parte em uma jornada de autodescoberta, diferente de tudo que ele já enfrentou. Mas seus esforços são interrompidos por um assassino galáctico conhecido como Gorr, o Carniceiro dos Deuses, que busca a extinção dos deuses.",
+              limitString(movie.overview, 290),
               style: TextStyle(fontSize: 14),
             ),
           ],
